@@ -13,8 +13,10 @@
         <file>Settings.png</file>
         <file>SingleStep.png</file>
         <file>Stop.png</file>
-        <file>dtulogo.jpg</file>
         <file>Save.png</file>
         <file>Check.png</file>
+        <file>dtu.png</file>
+        <file>Edit.png</file>
+        <file>NoEdit.png</file>
     </qresource>
 </RCC>

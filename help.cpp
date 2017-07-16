@@ -59,7 +59,7 @@ void MainWindow::help_AboutSimulator()
                     tr("About Patmos ISA Simulator"),
                     QString(tr("<span style='font-size: 14pt;'>"
                                "<br><center>Patmos ISA Simulator\n</center><br/>"
-                               "<center><img src=':/icons/dtulogo.jpg'>"
+                               "<center><img src=':/icons/dtu.png'>"
                                "<span style='font-size: 10pt;'>"))
                     + QString("<p>") + "version 1.1" + QString("</p>")
                     + QString (tr("<p>A simulator of the Patmos processor.</p>"

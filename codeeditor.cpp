@@ -12,6 +12,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
+    this->setReadOnly(true);
 
     updateLineNumberAreaWidth(0);
     highlightCurrentLine();
@@ -34,6 +35,16 @@ int CodeEditor::lineNumberAreaWidth()
     int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
 
     return space;
+}
+
+void CodeEditor::editable()
+{
+    this->setReadOnly(false);
+}
+
+void CodeEditor::noeditable()
+{
+    this->setReadOnly(true);
 }
 
 //![extraAreaWidth]

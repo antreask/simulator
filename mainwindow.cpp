@@ -447,6 +447,19 @@ void MainWindow::createActions()
 
 #endif // !QT_NO_CLIPBOARD
 
+
+    fileToolBar->addSeparator();
+    const QIcon editIcon = QIcon(":/icons/Edit.png");
+    QAction *edit = fileToolBar->addAction(editIcon,tr("Enable Edit"));
+    connect(edit, SIGNAL(triggered()), editor, SLOT(editable()));
+    edit->setStatusTip(tr("Make form editable"));
+
+    const QIcon noEditIcon = QIcon(":/icons/NoEdit.png");
+    QAction *noedit = fileToolBar->addAction(noEditIcon,tr("Disable Edit"));
+    connect(noedit, SIGNAL(triggered()), editor, SLOT(noeditable()));
+    noedit->setStatusTip(tr("Make form uneditable"));
+
+
     viewMenu = menuBar()->addMenu(tr("&View"));
 
 
