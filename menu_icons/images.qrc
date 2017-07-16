@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>ClearRegs.png</file>
+        <file>Help.png</file>
+        <file>LoadFile.png</file>
+        <file>new.png</file>
+        <file>Pause.png</file>
+        <file>Print.png</file>
+        <file>Reinit.png</file>
+        <file>ReloadFile.png</file>
+        <file>Run.png</file>
+        <file>SaveLog.png</file>
+        <file>Settings.png</file>
+        <file>SingleStep.png</file>
+        <file>Stop.png</file>
+        <file>dtulogo.jpg</file>
+        <file>Save.png</file>
+        <file>Check.png</file>
+    </qresource>
+</RCC>
