@@ -6,9 +6,11 @@ PrintForm::PrintForm(QWidget *parent) :
     ui(new Ui::PrintForm)
 {
     ui->setupUi(this);
+
 }
 
 PrintForm::~PrintForm()
 {
     delete ui;
 }
+

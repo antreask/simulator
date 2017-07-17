@@ -107,6 +107,7 @@ void MainWindow::createDockWindows()
 
     PredDock = new QDockWidget(tr("Pred. Registers"), this);
     PredDock->setWidget(RF->getPredRegTable());
+    PredDock->setVisible(false);
     addDockWidget(Qt::RightDockWidgetArea, PredDock);
 
     viewMenu->addAction(PredDock->toggleViewAction());
@@ -114,8 +115,10 @@ void MainWindow::createDockWindows()
 
     ConsoleDock = new QDockWidget(tr("Console"), this);
     ConsoleDock->setWidget(console);
+    ConsoleDock->setVisible(false);
     addDockWidget(Qt::BottomDockWidgetArea, ConsoleDock);
 
+    viewMenu->addAction(ConsoleDock->toggleViewAction());
 
 }
 
@@ -506,7 +509,6 @@ void MainWindow::isBaseChanged()
     GPDock->setWidget(RF->tableToBase(RF->getBase(),RF->getGPRegTable()));
     SPDock->setWidget(RF->tableToBase(RF->getBase(),RF->getSPRegTable()));
     PredDock->setWidget(RF->tableToBase(RF->getBase(),RF->getPredRegTable()));
-
 }
 
 

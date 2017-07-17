@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "saveresform.h"
+#include "printform.h"
 #include <ui_saveresform.h>
+#include <ui_printform.h>
 #include <QStatusBar>
 #include <QDesktopWidget>
 #include <QDialog>
@@ -87,52 +89,129 @@ void MainWindow::file_SaveLogFile()
                 }
                 outFile << "Predicate Registers\n" << textData << "\n";
             }
-            /* if (slf->ConsoleCheckBox->isChecked())
-             {
-                 QString textData;
-                 for (int i = 0; i<RF->getGPRegTable()->model()->rowCount(); i++) {
-                     for (int j = 0; j < RF->getGPRegTable()->model()->columnCount(); j++) {
 
-                             textData += RF->getGPRegTable()->model()->data(RF->getGPRegTable()->model()->index(i,j)).toString();
-                     }
-                     textData += "\n";             // (optional: for new line segmentation)
-                 }
-                 outFile << textData;
-                 outFile << "\n\n";
-             }*/
+            if (slf->InstrCheckBox->isChecked())
+            {
+                //QString textData;
+
+            }
+
+            if (slf->DataCheckBox->isChecked())
+            {
+                //QString textData;
+
+            }
+
             file.close();
         }
     }
 }
 
 
-
 void MainWindow::print()
 {
+    QDialog* printDialog=new QDialog();
+    Ui::PrintForm* pf =new Ui::PrintForm();
+    pf->setupUi(printDialog);
 
     QPrinter printer;
     QPrintDialog dialog(&printer, this);
-    // dialog.setWindowTitle(tr("Print Document mothafacka"));
-    /*
-    if (editor->textCursor().hasSelection())
-        dialog.addEnabledOption(QAbstractPrintDialog::PrintSelection);
-    if (dialog.exec() != QDialog::Accepted) {
-        return;*/
-    if (dialog.exec() == QDialog::Accepted)
+
+    connect(pf->buttonBox, SIGNAL(accepted()), printDialog, SLOT(accept()));
+    connect(pf->buttonBox, SIGNAL(rejected()), printDialog, SLOT(reject()));
+
+
+    if (printDialog->exec() == QDialog::Accepted)
     {
-        QPainter painter(&printer);
-        QString textData;
-        for (int i = 0; i<RF->getGPRegTable()->model()->rowCount(); i++)
+        QTextDocument textDocument;
+        QString finalData;
+        if (pf->GPCheckBox->isChecked())
         {
-            for (int j = 0; j < RF->getGPRegTable()->model()->columnCount(); j++)
+            QString textData;
+            for (int i = 0; i<RF->getGPRegTable()->model()->rowCount(); i++)
             {
-                textData += RF->getGPRegTable()->model()->data(RF->getGPRegTable()->model()->index(i,j)).toString();
+                for (int j = 0; j < RF->getGPRegTable()->model()->columnCount(); j++)
+                {
+                    textData += RF->getGPRegTable()->model()->data(RF->getGPRegTable()->model()->index(i,j)).toString();
+                }
+                textData += "\n";
             }
-            textData += "\n";             // (optional: for new line segmentation)
+            finalData+="\nGeneral Purpose Registers\n";
+            finalData+="-----------------------------\n";
+            finalData+=textData;
         }
-        //  RF->getGPRegTable()->render(&painter);
-        //SPDock->render(&painter);
-        //PredDock->render(&painter);
+
+        if (pf->SPCheckBox->isChecked())
+        {
+            QString textData;
+            for (int i = 0; i<RF->getSPRegTable()->model()->rowCount(); i++)
+            {
+                for (int j = 0; j < RF->getSPRegTable()->model()->columnCount(); j++)
+                {
+                    textData += RF->getSPRegTable()->model()->data(RF->getSPRegTable()->model()->index(i,j)).toString();
+                }
+                textData += "\n";
+            }
+            finalData+="\nSpecial Registers\n";
+            finalData+="----------------------\n";
+            finalData+=textData;
+        }
+
+        if (pf->PredCheckBox->isChecked())
+        {
+            QString textData;
+            for (int i = 0; i<RF->getPredRegTable()->model()->rowCount(); i++)
+            {
+                for (int j = 0; j < RF->getPredRegTable()->model()->columnCount(); j++)
+                {
+                    textData += RF->getPredRegTable()->model()->data(RF->getPredRegTable()->model()->index(i,j)).toString();
+                }
+                textData += "\n";
+            }
+            finalData+="\nPredicate Registers\n";
+            finalData+="----------------------\n";
+            finalData+=textData;
+        }
+
+        if (pf->IMCheckBox->isChecked())
+        {
+            QString textData;
+            /*for (int i = 0; i<RF->getSPRegTable()->model()->rowCount(); i++)
+            {
+                for (int j = 0; j < RF->getSPRegTable()->model()->columnCount(); j++)
+                {
+                    textData += RF->getSPRegTable()->model()->data(RF->getSPRegTable()->model()->index(i,j)).toString();
+                }
+                textData += "\n";
+            }*/
+            finalData+="\nInstruction Memory\n";
+            finalData+="----------------------\n";
+            finalData+=textData;
+        }
+
+        if (pf->DMCheckBox->isChecked())
+        {
+            QString textData;
+            /*for (int i = 0; i<RF->getSPRegTable()->model()->rowCount(); i++)
+            {
+                for (int j = 0; j < RF->getSPRegTable()->model()->columnCount(); j++)
+                {
+                    textData += RF->getSPRegTable()->model()->data(RF->getSPRegTable()->model()->index(i,j)).toString();
+                }
+                textData += "\n";
+            }*/
+            finalData+="\nData Memory\n";
+            finalData+="----------------------\n";
+            finalData+=textData;
+        }
+
+        if (dialog.exec())
+        {
+            textDocument.setPlainText(finalData);
+            textDocument.print(&printer);
+        }
+
+
     }
 
 }
