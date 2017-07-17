@@ -36,6 +36,7 @@ public:
     QDockWidget *GPDock;
     QDockWidget *SPDock;
     QDockWidget *PredDock;
+    QDockWidget *ConsoleDock;
     RegisterFile *RF;
     InstructionMemory *IM;
     DataMemory *DM;
@@ -99,6 +100,7 @@ private:
     QAction *recentFileActs[MaxRecentFiles];
     QAction *recentFileSeparator;
     QAction *recentFileSubMenuAct;
+    QTextEdit *console;
 
     QMenu *viewMenu;
     QString curFile;

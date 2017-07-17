@@ -43,7 +43,7 @@ void MainWindow::init()
     setAttribute(Qt::WA_DeleteOnClose);
 
     isUntitled = true;
-    //textEdit = new QTextEdit;
+    console = new QTextEdit;
     editor= new CodeEditor;
     editor->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 250);"));
     //set font
@@ -110,6 +110,11 @@ void MainWindow::createDockWindows()
     addDockWidget(Qt::RightDockWidgetArea, PredDock);
 
     viewMenu->addAction(PredDock->toggleViewAction());
+
+
+    ConsoleDock = new QDockWidget(tr("Console"), this);
+    ConsoleDock->setWidget(console);
+    addDockWidget(Qt::BottomDockWidgetArea, ConsoleDock);
 
 
 }

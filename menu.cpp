@@ -130,7 +130,7 @@ void MainWindow::print()
             }
             textData += "\n";             // (optional: for new line segmentation)
         }
-        RF->getGPRegTable()->render(&painter);
+        //  RF->getGPRegTable()->render(&painter);
         //SPDock->render(&painter);
         //PredDock->render(&painter);
     }
