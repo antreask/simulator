@@ -130,7 +130,7 @@ void MainWindow::print()
         {
             finalData+="\nAssembly Code\n";
             finalData+="------------------\n";
-            finalData+=editor->toPlainText();
+            finalData+=editor->toPlainText()+"\n";
         }
 
         if (pf->GPCheckBox->isChecked())

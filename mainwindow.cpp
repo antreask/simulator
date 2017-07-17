@@ -385,7 +385,7 @@ void MainWindow::createActions()
 
     const QIcon checkIcon = QIcon(":/icons/Check.png");
     QAction *check = simMenu->addAction(checkIcon,tr("Check Source"), qApp, &QApplication::aboutQt);
-    check->setShortcut(tr("F5"));
+    check->setShortcut(tr("F4"));
     check->setStatusTip(tr("The program will run until it finishes"));
     fileToolBar->addAction(check);
 
@@ -459,11 +459,13 @@ void MainWindow::createActions()
     fileToolBar->addSeparator();
     const QIcon editIcon = QIcon(":/icons/Edit.png");
     QAction *edit = fileToolBar->addAction(editIcon,tr("Enable Edit"));
+    edit->setShortcut(tr("CTRL+E"));
     connect(edit, SIGNAL(triggered()), editor, SLOT(editable()));
     edit->setStatusTip(tr("Make form editable"));
 
     const QIcon noEditIcon = QIcon(":/icons/NoEdit.png");
     QAction *noedit = fileToolBar->addAction(noEditIcon,tr("Disable Edit"));
+    noedit->setShortcut(tr("CTRL+Shift+E"));
     connect(noedit, SIGNAL(triggered()), editor, SLOT(noeditable()));
     noedit->setStatusTip(tr("Make form uneditable"));
 
