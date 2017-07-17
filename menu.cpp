@@ -125,6 +125,14 @@ void MainWindow::print()
     {
         QTextDocument textDocument;
         QString finalData;
+
+        if (pf->AssemblyCheckBox->isChecked())
+        {
+            finalData+="\nAssembly Code\n";
+            finalData+="------------------\n";
+            finalData+=editor->toPlainText();
+        }
+
         if (pf->GPCheckBox->isChecked())
         {
             QString textData;
