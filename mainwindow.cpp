@@ -384,7 +384,7 @@ void MainWindow::createActions()
     fileToolBar->addSeparator();
 
     const QIcon checkIcon = QIcon(":/icons/Check.png");
-    QAction *check = simMenu->addAction(checkIcon,tr("Check Source"), qApp, &QApplication::aboutQt);
+    QAction *check = simMenu->addAction(checkIcon,tr("Check Source"), this, &MainWindow::checkFile);
     check->setShortcut(tr("F4"));
     check->setStatusTip(tr("The program will run until it finishes"));
     fileToolBar->addAction(check);
@@ -512,12 +512,6 @@ void MainWindow::isBaseChanged()
     SPDock->setWidget(RF->tableToBase(RF->getBase(),RF->getSPRegTable()));
     PredDock->setWidget(RF->tableToBase(RF->getBase(),RF->getPredRegTable()));
 }
-
-
-
-
-
-
 
 
 QString MainWindow::strippedName(const QString &fullFileName)

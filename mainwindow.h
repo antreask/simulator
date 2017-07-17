@@ -105,6 +105,7 @@ private:
     QMenu *viewMenu;
     QString curFile;
     bool isUntitled;
+    bool isfileok=false;
     int base=10;
 };
 

@@ -25,7 +25,8 @@ int main(int argc, char *argv[])
 
 
     MainWindow *mainWin = Q_NULLPTR;
-    foreach (const QString &file, parser.positionalArguments()) {
+    foreach (const QString &file, parser.positionalArguments())
+    {
         MainWindow *newWin = new MainWindow(file);
         newWin->tile(mainWin);
         newWin->show();
@@ -39,14 +40,6 @@ int main(int argc, char *argv[])
     Window = mainWin;
 
     Window->show();
-
-    /*CodeEditor editor;
-    editor.setWindowTitle(QObject::tr("Code Editor Example"));
-    editor.show();*/
-
-
-
-
 
     return app.exec();
 }
