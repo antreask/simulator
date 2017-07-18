@@ -63,7 +63,7 @@ void MainWindow::init()
     connect(editor->document(), &QTextDocument::contentsChanged,
             this, &MainWindow::documentWasModified);
 
-    connect(RF,SIGNAL(clearRegSig()),this,SLOT(isRegFileChanged()));
+    //connect(RF,SIGNAL(clearRegSig()),this,SLOT(isRegFileChanged()));
     connect(RF,SIGNAL(basechanged()),this,SLOT(isBaseChanged()));
     setUnifiedTitleAndToolBarOnMac(true);
 }
@@ -210,10 +210,7 @@ void MainWindow::sim_ReinitializeSimulator()
 }
 
 
-void MainWindow::sim_Run()
-{
 
-}
 
 
 void MainWindow::sim_Pause()
@@ -262,7 +259,6 @@ void MainWindow::loadFile(const QString &fileName)
 
     setCurrentFile(fileName);
     statusBar()->showMessage(tr("File loaded"), 2000);
-
 
 }
 
@@ -375,6 +371,8 @@ void MainWindow::createActions()
     //second method
     QAction *clearReg = simMenu->addAction(clearRegIcon,tr("Clear Registers"));
     connect(clearReg, SIGNAL(triggered()), RF, SLOT(clearRegisters()));
+    connect(clearReg, SIGNAL(triggered()), DM, SLOT(clearmemory()));
+    connect(clearReg, SIGNAL(triggered()), IM, SLOT(clearmemory()));
     clearReg->setStatusTip(tr("Clear register file"));
 
     simMenu->addSeparator();
@@ -390,7 +388,7 @@ void MainWindow::createActions()
     fileToolBar->addAction(check);
 
     const QIcon runIcon = QIcon(":/icons/Run.png");
-    QAction *run = simMenu->addAction(runIcon,tr("Run/Continue"), qApp, &QApplication::aboutQt);
+    QAction *run = simMenu->addAction(runIcon,tr("Run/Continue"), this, &MainWindow::sim_Run);
     run->setShortcut(tr("F5"));
     run->setStatusTip(tr("The program will run until it finishes"));
     fileToolBar->addAction(run);

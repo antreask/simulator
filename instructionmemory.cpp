@@ -3,17 +3,15 @@
 InstructionMemory::InstructionMemory()
 {
 
-    IMmodel = new QStandardItemModel();
+    IMmodel = new QStandardItemModel(0,2,this);
 
     IMTable = new QTableView();
 
     IMTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    IMTable->horizontalHeader()->hide();
+    //IMTable->horizontalHeader()->hide();
     IMTable->verticalHeader()->hide();
-
+    IMmodel->setHorizontalHeaderLabels(QStringList() << tr("Address")<< tr("Instruction"));
     IMTable->setModel(IMmodel);
-
-
 }
 
 QTableView *InstructionMemory::getIMTable() const
@@ -34,4 +32,12 @@ QStandardItemModel *InstructionMemory::getIMmodel() const
 void InstructionMemory::setIMmodel(QStandardItemModel *value)
 {
     IMmodel = value;
+}
+
+void InstructionMemory::clearmemory()
+{
+    IMmodel->clear();
+    IMmodel->setHorizontalHeaderLabels(QStringList() << tr("Address")<< tr("Instruction"));;
+    IMTable->setModel(IMmodel);
+    lastAddress=0;
 }

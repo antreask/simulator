@@ -106,6 +106,9 @@ private:
     QString curFile;
     bool isUntitled;
     bool isfileok=false;
+    bool dataflag=false;
+    bool instflag=false;
+    bool mainflag=false;
     int base=10;
 };
 

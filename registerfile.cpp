@@ -4,7 +4,8 @@
 RegisterFile::RegisterFile()
 {
 
-    GPmodel = new QStandardItemModel(32,2,this); //2 Rows and 3 Columns
+    GPmodel = new QStandardItemModel(
+    ); //2 Rows and 3 Columns
     SPmodel = new QStandardItemModel(16,2,this); //2 Rows and 3 Columns
     Predmodel = new QStandardItemModel(8,2,this); //2 Rows and 3 Columns
 
@@ -289,11 +290,7 @@ void RegisterFile::clearRegisters()
         GPRegTable->model()->setData(index,dat);
 
     }
-
-    emit clearRegSig();
-
-    qDebug() <<"clear registers";
-
+    //emit clearRegSig();
 
 }
 

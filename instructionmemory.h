@@ -4,7 +4,6 @@
 #include <QTableWidgetItem>
 #include <QStandardItemModel>
 #include <QHeaderView>
-#include <qactiongroup.h>
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -13,8 +12,9 @@ class QMenu;
 class QTextEdit;
 QT_END_NAMESPACE
 
-class InstructionMemory
+class InstructionMemory:public QTableWidget
 {
+    Q_OBJECT
 public:
     InstructionMemory();
 
@@ -26,10 +26,18 @@ public:
     QStandardItemModel *getIMmodel() const;
     void setIMmodel(QStandardItemModel *value);
 
+
+public slots:
+    void clearmemory();
+
+signals:
+    void clearIMsig();
+
 private:
 
     QTableView *IMTable;
     QStandardItemModel *IMmodel;
+    int lastAddress=0;
 
 };
 
