@@ -233,7 +233,7 @@ void MainWindow::print()
             {
                 for (int j = 0; j < IM->getIMTable()->model()->columnCount(); j++)
                 {
-                    textData += RF->IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
+                    textData += IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
                 }
                 textData += "\n";
             }
