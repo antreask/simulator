@@ -104,11 +104,13 @@ void MainWindow::file_SaveLogFile()
                     {
 
                         textData += IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
+                        textData += "\t\t";
                     }
                     textData += "\n";             // (optional: for new line segmentation)
                 }
-                outFile << "Predicate Registers\n"
-                        << "--------------------\n"
+                outFile << "Instruction Memory\n"
+                        << "-------------------\n"
+                        << "Address\tInstruction\n"
                         << textData << "\n";
 
             }
@@ -122,11 +124,13 @@ void MainWindow::file_SaveLogFile()
                     {
 
                         textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
+                        textData += "\t\t";
                     }
                     textData += "\n";             // (optional: for new line segmentation)
                 }
-                outFile << "Predicate Registers\n"
-                        << "--------------------\n"
+                outFile << "Data Memory\n"
+                        << "------------\n"
+                        << "Address\tContent\tLabel\n"
                         << textData << "\n";
 
             }
@@ -158,7 +162,7 @@ void MainWindow::print()
         if (pf->AssemblyCheckBox->isChecked())
         {
             finalData+="\nAssembly Code\n";
-            finalData+="------------------\n";
+            finalData+="-------------------\n";
             finalData+=editor->toPlainText()+"\n";
         }
 
@@ -174,7 +178,7 @@ void MainWindow::print()
                 textData += "\n";
             }
             finalData+="\nGeneral Purpose Registers\n";
-            finalData+="-----------------------------\n";
+            finalData+="-----------------------------------\n";
             finalData+=textData;
         }
 
@@ -190,7 +194,7 @@ void MainWindow::print()
                 textData += "\n";
             }
             finalData+="\nSpecial Registers\n";
-            finalData+="----------------------\n";
+            finalData+="---------------------\n";
             finalData+=textData;
         }
 
@@ -206,27 +210,11 @@ void MainWindow::print()
                 textData += "\n";
             }
             finalData+="\nPredicate Registers\n";
-            finalData+="----------------------\n";
+            finalData+="------------------------\n";
             finalData+=textData;
         }
 
         if (pf->IMCheckBox->isChecked())
-        {
-            QString textData;
-            for (int i = 0; i<DM->getDMTable()->model()->rowCount(); i++)
-            {
-                for (int j = 0; j < DM->getDMTable()->model()->columnCount(); j++)
-                {
-                    textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
-                }
-                textData += "\n";
-            }
-            finalData+="\nInstruction Memory\n";
-            finalData+="----------------------\n";
-            finalData+=textData;
-        }
-
-        if (pf->DMCheckBox->isChecked())
         {
             QString textData;
             for (int i = 0; i<IM->getIMTable()->model()->rowCount(); i++)
@@ -234,13 +222,35 @@ void MainWindow::print()
                 for (int j = 0; j < IM->getIMTable()->model()->columnCount(); j++)
                 {
                     textData += IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
+                    textData += "\t";
+                }
+                textData += "\n";
+            }
+            finalData+="\nInstruction Memory\n";
+            finalData+="----------------------\n";
+            finalData+="Address\tInstruction\n";
+            finalData+=textData;
+        }
+
+        if (pf->DMCheckBox->isChecked())
+        {
+            QString textData;
+            for (int i = 0; i<DM->getDMTable()->model()->rowCount(); i++)
+            {
+                for (int j = 0; j < DM->getDMTable()->model()->columnCount(); j++)
+                {
+                    textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
+                    textData += "\t";
                 }
                 textData += "\n";
             }
             finalData+="\nData Memory\n";
-            finalData+="----------------------\n";
+            finalData+="---------------\n";
+            finalData+="Address\tContent\tLabel\n";
             finalData+=textData;
         }
+
+
 
         if (dialog.exec())
         {
