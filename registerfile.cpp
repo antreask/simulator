@@ -266,10 +266,6 @@ void RegisterFile::baseUpdate(const int &base)
 
 }
 
-
-
-
-
 void RegisterFile::clearRegisters()
 {
 

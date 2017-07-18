@@ -19,7 +19,6 @@
 void MainWindow::file_SaveLogFile()
 {
 
-
     static QDialog* saveDialog;
     static Ui::saveResForm* slf;
 
@@ -59,7 +58,9 @@ void MainWindow::file_SaveLogFile()
                     }
                     textData += "\n";             // (optional: for new line segmentation)
                 }
-                outFile << "General Purpose Registers\n" << textData << "\n";
+                outFile << "General Purpose Registers\n"
+                        << "---------------------------\n"
+                        << textData << "\n";
             }
             if (slf->SPRegsCheckBox->isChecked())
             {
@@ -73,7 +74,9 @@ void MainWindow::file_SaveLogFile()
                     }
                     textData += "\n";             // (optional: for new line segmentation)
                 }
-                outFile << "Special Purpose Registers\n" << textData << "\n";
+                outFile << "Special Purpose Registers\n"
+                        << "--------------------------\n"
+                        << textData << "\n";
             }
             if (slf->PredRegsCheckBox->isChecked())
             {
@@ -87,18 +90,44 @@ void MainWindow::file_SaveLogFile()
                     }
                     textData += "\n";             // (optional: for new line segmentation)
                 }
-                outFile << "Predicate Registers\n" << textData << "\n";
+                outFile << "Predicate Registers\n"
+                        << "-------------------\n"
+                        << textData << "\n";
             }
 
             if (slf->InstrCheckBox->isChecked())
             {
-                //QString textData;
+                QString textData;
+                for (int i = 0; i<IM->getIMTable()->model()->rowCount(); i++)
+                {
+                    for (int j = 0; j < IM->getIMTable()->model()->columnCount(); j++)
+                    {
+
+                        textData += IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
+                    }
+                    textData += "\n";             // (optional: for new line segmentation)
+                }
+                outFile << "Predicate Registers\n"
+                        << "--------------------\n"
+                        << textData << "\n";
 
             }
 
             if (slf->DataCheckBox->isChecked())
             {
-                //QString textData;
+                QString textData;
+                for (int i = 0; i<DM->getDMTable()->model()->rowCount(); i++)
+                {
+                    for (int j = 0; j < DM->getDMTable()->model()->columnCount(); j++)
+                    {
+
+                        textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
+                    }
+                    textData += "\n";             // (optional: for new line segmentation)
+                }
+                outFile << "Predicate Registers\n"
+                        << "--------------------\n"
+                        << textData << "\n";
 
             }
 
@@ -184,14 +213,14 @@ void MainWindow::print()
         if (pf->IMCheckBox->isChecked())
         {
             QString textData;
-            /*for (int i = 0; i<RF->getSPRegTable()->model()->rowCount(); i++)
+            for (int i = 0; i<DM->getDMTable()->model()->rowCount(); i++)
             {
-                for (int j = 0; j < RF->getSPRegTable()->model()->columnCount(); j++)
+                for (int j = 0; j < RF->DM->getDMTable()->model()->columnCount(); j++)
                 {
-                    textData += RF->getSPRegTable()->model()->data(RF->getSPRegTable()->model()->index(i,j)).toString();
+                    textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
                 }
                 textData += "\n";
-            }*/
+            }
             finalData+="\nInstruction Memory\n";
             finalData+="----------------------\n";
             finalData+=textData;
@@ -200,14 +229,14 @@ void MainWindow::print()
         if (pf->DMCheckBox->isChecked())
         {
             QString textData;
-            /*for (int i = 0; i<RF->getSPRegTable()->model()->rowCount(); i++)
+            for (int i = 0; i<IM->getIMTable()->model()->rowCount(); i++)
             {
-                for (int j = 0; j < RF->getSPRegTable()->model()->columnCount(); j++)
+                for (int j = 0; j < IM->getIMTable()->model()->columnCount(); j++)
                 {
-                    textData += RF->getSPRegTable()->model()->data(RF->getSPRegTable()->model()->index(i,j)).toString();
+                    textData += RF->IM->getIMTable()->model()->data(IM->getIMTable()->model()->index(i,j)).toString();
                 }
                 textData += "\n";
-            }*/
+            }
             finalData+="\nData Memory\n";
             finalData+="----------------------\n";
             finalData+=textData;

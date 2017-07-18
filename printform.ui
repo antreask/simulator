@@ -46,6 +46,9 @@
         <property name="text">
          <string>Instruction Memory</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="2" column="0">
@@ -53,12 +56,18 @@
         <property name="text">
          <string>Pred. Registers</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="SPCheckBox">
         <property name="text">
          <string>SP Registers</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -73,12 +82,18 @@
         <property name="text">
          <string>GP Registers</string>
         </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="4" column="0">
        <widget class="QCheckBox" name="DMCheckBox">
         <property name="text">
          <string>Data Memory</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -88,6 +103,9 @@
      <widget class="QCheckBox" name="AssemblyCheckBox">
       <property name="text">
        <string>Assembly File</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>

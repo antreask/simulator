@@ -31,9 +31,6 @@ public:
 public slots:
     void clearmemory();
 
-signals:
-    void clearDMsig();
-
 
 private:
 

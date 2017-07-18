@@ -48,7 +48,6 @@ void MainWindow::checkFile()
         {
             if (!DM->addline(line))
             {
-                QString s="sadf";
                 console->append("<html>"
                                 "<font color=\"red\">"
                                 "<b>Line "+QString::number(line_num)+"- Error:</b>"

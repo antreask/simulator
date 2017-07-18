@@ -56,7 +56,7 @@ public slots:
     void clearRegisters();
 
 signals:
-    void clearRegSig();
+    // void clearRegSig();
     void basechanged();
 
 private:

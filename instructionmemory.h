@@ -30,9 +30,6 @@ public:
 public slots:
     void clearmemory();
 
-signals:
-    void clearIMsig();
-
 private:
 
     QTableView *IMTable;

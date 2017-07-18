@@ -28,7 +28,6 @@ SOURCES += \
         mainwindow.cpp \
     codeeditor.cpp \
     parser.cpp \
-    extract_info.cpp \
     registerfile.cpp \
     help.cpp \
     saveresform.cpp \
