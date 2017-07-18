@@ -215,7 +215,7 @@ void MainWindow::print()
             QString textData;
             for (int i = 0; i<DM->getDMTable()->model()->rowCount(); i++)
             {
-                for (int j = 0; j < RF->DM->getDMTable()->model()->columnCount(); j++)
+                for (int j = 0; j < DM->getDMTable()->model()->columnCount(); j++)
                 {
                     textData += DM->getDMTable()->model()->data(DM->getDMTable()->model()->index(i,j)).toString();
                 }
