@@ -10,7 +10,6 @@ DataMemory::DataMemory()
 
     DMTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     //DMTable->resizeColumnsToContents();
-
     //DMTable->horizontalHeader()->hide();
     DMTable->verticalHeader()->hide();
     DMmodel->setHorizontalHeaderLabels(QStringList() << tr("Address")

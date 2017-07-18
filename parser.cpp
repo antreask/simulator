@@ -7,6 +7,8 @@
 void MainWindow::checkFile()
 {
 
+    clearEverything();
+    console->clear();
     QString src=editor->toPlainText();
     QTextStream assembly(&src, QIODevice::ReadOnly);
 
@@ -56,12 +58,31 @@ void MainWindow::checkFile()
                                 " </html>");
                 return;
             }
+            console->append("Data Segment is syntactically correct.");
+
         }
+        else if (instflag && (line != ".text") && mainflag)
+        {
+
+        }
+
+
+
+
+
+
 
     }
     DataDock->setWidget(DM->getDMTable());
     //console->append(assembly.readLine());
 
+}
+
+void MainWindow::clearEverything()
+{
+    RF->clearRegisters();
+    DM->clearmemory();
+    IM->clearmemory();
 }
 
 void MainWindow::sim_Run()

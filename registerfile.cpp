@@ -35,7 +35,7 @@ RegisterFile::RegisterFile()
             }
             else
             {
-                QStandardItem *item =  new QStandardItem( QString("15"));
+                QStandardItem *item =  new QStandardItem( QString("0"));
                 GPmodel->setItem(r, c, item);
             }
 
@@ -52,7 +52,7 @@ RegisterFile::RegisterFile()
             }
             else
             {
-                QStandardItem *item =  new QStandardItem( QString("15"));
+                QStandardItem *item =  new QStandardItem( QString("0"));
                 SPmodel->setItem(r, c, item);
             }
 
@@ -69,7 +69,7 @@ RegisterFile::RegisterFile()
             }
             else
             {
-                QStandardItem *item =  new QStandardItem( QString("15"));
+                QStandardItem *item =  new QStandardItem( QString("0"));
                 Predmodel->setItem(r, c, item);
             }
 

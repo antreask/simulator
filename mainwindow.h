@@ -104,6 +104,7 @@ private:
 
     QMenu *viewMenu;
     QString curFile;
+    void clearEverything();
     bool isUntitled;
     bool isfileok=false;
     bool dataflag=false;

@@ -115,7 +115,9 @@ void MainWindow::createDockWindows()
 
     ConsoleDock = new QDockWidget(tr("Console"), this);
     ConsoleDock->setWidget(console);
-    ConsoleDock->setVisible(false);
+    ConsoleDock->setVisible(true);
+    ConsoleDock->;
+    set initial size
     addDockWidget(Qt::BottomDockWidgetArea, ConsoleDock);
 
     viewMenu->addAction(ConsoleDock->toggleViewAction());
@@ -367,9 +369,9 @@ void MainWindow::createActions()
 
     const QIcon clearRegIcon = QIcon(":/icons/ClearRegs.png");
     // first method
-    //QAction *clearReg = simMenu->addAction(clearRegIcon,tr("Clear Registers"), RF, &MainWindow::about);
+    //QAction *clearReg = simMenu->addAction(clearRegIcon,tr("Clear Register File and Memories"), RF, &MainWindow::about);
     //second method
-    QAction *clearReg = simMenu->addAction(clearRegIcon,tr("Clear Registers"));
+    QAction *clearReg = simMenu->addAction(clearRegIcon,tr("Clear Register File and Memories"));
     connect(clearReg, SIGNAL(triggered()), RF, SLOT(clearRegisters()));
     connect(clearReg, SIGNAL(triggered()), DM, SLOT(clearmemory()));
     connect(clearReg, SIGNAL(triggered()), IM, SLOT(clearmemory()));
