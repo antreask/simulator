@@ -1,4 +1,6 @@
 #include "instructionmemory.h"
+#include <QRegularExpression>
+
 
 InstructionMemory::InstructionMemory()
 {
@@ -32,6 +34,19 @@ QStandardItemModel *InstructionMemory::getIMmodel() const
 void InstructionMemory::setIMmodel(QStandardItemModel *value)
 {
     IMmodel = value;
+}
+
+bool InstructionMemory::addline(QString line)
+{
+    QRegularExpression separator("(\\ |\\,|\\=|\\t)"); //RegEx for ' ' or ',' or '.' or ':' or '\t'
+    QStringList list = line.split(separator,QString::SkipEmptyParts);
+
+    /*if ((list[1]!=)
+            return false;
+
+            addnewdata(list);*/
+
+    return true;
 }
 
 void InstructionMemory::clearmemory()

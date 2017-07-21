@@ -26,6 +26,8 @@ public:
     QStandardItemModel *getIMmodel() const;
     void setIMmodel(QStandardItemModel *value);
 
+    bool addline(QString line);
+
 
 public slots:
     void clearmemory();

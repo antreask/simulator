@@ -116,8 +116,6 @@ void MainWindow::createDockWindows()
     ConsoleDock = new QDockWidget(tr("Console"), this);
     ConsoleDock->setWidget(console);
     ConsoleDock->setVisible(true);
-    ConsoleDock->;
-    set initial size
     addDockWidget(Qt::BottomDockWidgetArea, ConsoleDock);
 
     viewMenu->addAction(ConsoleDock->toggleViewAction());

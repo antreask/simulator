@@ -23,7 +23,21 @@ void MainWindow::checkFile()
     {
         line = assembly.readLine();
         line_num++;
+        line =line.mid(0, line.indexOf("#"));
 
+
+        /*int position=line.indexOf("#", 0);
+        if( position != -1)
+        {
+            qDebug() << "Found # tag at index position\n";
+            qDebug() << position;
+            qDebug() << position;
+        }*/
+
+        if (line.trimmed().isEmpty()) /* nothing but whitespace */
+            continue;
+
+        //  qDebug() << line;
         if (line == ".data")
         {
             dataflag=true;
@@ -36,12 +50,13 @@ void MainWindow::checkFile()
             dataflag=false;
             instflag=true;
             mainflag=false;
+            console->append("Data Segment is syntactically correct.");
             continue;
         }
-        else if (line == ".main")
+        else if (line == "main:")
         {
             dataflag=false;
-            instflag=false;
+            instflag=true;
             mainflag=true;
             continue;
         }
@@ -58,17 +73,13 @@ void MainWindow::checkFile()
                                 " </html>");
                 return;
             }
-            console->append("Data Segment is syntactically correct.");
+            continue;
 
         }
         else if (instflag && (line != ".text") && mainflag)
         {
-
+            qDebug() << "instruction\n";
         }
-
-
-
-
 
 
 
