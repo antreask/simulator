@@ -61,6 +61,7 @@ void MainWindow::checkFile()
                                 "  Wrong data type!"
                                 "</font>"
                                 " </html>");
+                clearEverything();
                 return;
             }
             continue;
@@ -76,6 +77,7 @@ void MainWindow::checkFile()
                                 "  Wrong instruction!"
                                 "</font>"
                                 " </html>");
+                clearEverything();
                 return;
             }
             continue;

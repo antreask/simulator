@@ -34,7 +34,14 @@ SOURCES += \
     menu.cpp \
     printform.cpp \
     datamemory.cpp \
-    instructionmemory.cpp
+    instructionmemory.cpp \
+    CPU/consumer.cpp \
+    CPU/event.cpp \
+    CPU/exe.cpp \
+    CPU/ide.cpp \
+    CPU/ife.cpp \
+    CPU/mem.cpp \
+    CPU/wb.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +50,14 @@ HEADERS += \
     saveresform.h \
     printform.h \
     datamemory.h \
-    instructionmemory.h
+    instructionmemory.h \
+    CPU/consumer.h \
+    CPU/event.h \
+    CPU/exe.h \
+    CPU/ide.h \
+    CPU/ife.h \
+    CPU/mem.h \
+    CPU/wb.h
 
 RESOURCES += \
     menu_icons/images.qrc
