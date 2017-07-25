@@ -2,10 +2,10 @@
 #include <QDebug>
 EXE::EXE()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "EXE's constructor called";
 }
 
 void EXE::wakeup()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "EXE's wakeup called";
 }

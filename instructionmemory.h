@@ -29,6 +29,9 @@ public:
     bool addline(QString line);
 
 
+    int getPCReg() const;
+    void setPCReg(int value);
+
 public slots:
     void clearmemory();
 
@@ -36,9 +39,10 @@ private:
 
     QTableView *IMTable;
     QStandardItemModel *IMmodel;
-    int lastAddress=0;
+
     QList<QString> insts=
     {
+        "nop",
         "add","sub","xor","or","and",
         "addi","subi","xori","ori","andi",
         "nor","shadd","shadd2",
@@ -47,8 +51,9 @@ private:
         "por","pand","pxor",
         "mts","mfs",
         "lw","lh","lb",
-        "sw","sh","sb",
+        "sw","sh","sb"
     };
+
 
     QList<QString> GPRegs= {"r0","r1","r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","r13","r14","r15",
                             "r16","r17","r18","r19","r20","r21","r22","r23","r24","r25","r26","r27","r28","r29","r30","r31",
@@ -63,6 +68,9 @@ private:
 
     void addnewdata(const QString &line);
     void addnewdata(const QStringList &list);
+    int PCReg=0;
+    int lastAddress=0;
+    bool bundle=false;
 };
 
 #endif // INSTRUCTIONMEMORY_H

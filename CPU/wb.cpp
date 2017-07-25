@@ -2,10 +2,10 @@
 #include <QDebug>
 WB::WB()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "WB's constructor called";
 }
 
 void WB::wakeup()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "WB's wakeup called";
 }

@@ -3,10 +3,12 @@
 #include <QCommandLineParser>
 
 #include "mainwindow.h"
-#include "registerfile.h"
+
+
 
 MainWindow* Window;
 QApplication* App;
+
 
 int main(int argc, char *argv[])
 {

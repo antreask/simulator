@@ -7,9 +7,15 @@
 #include <QTableWidget>
 #include <codeeditor.h>
 #include <QActionGroup>
+#include <deque>
 #include "registerfile.h"
 #include "instructionmemory.h"
 #include "datamemory.h"
+
+#include "CPU/consumer.h"
+#include "CPU/event.h"
+
+
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -41,6 +47,9 @@ public:
     InstructionMemory *IM;
     DataMemory *DM;
     QActionGroup *RegViewGroup;
+    deque<Event> que;
+
+    InstructionMemory *getIM() const;
 
 public slots:
     void isRegFileChanged();
@@ -110,6 +119,7 @@ private:
     bool dataflag=false;
     bool instflag=false;
     bool mainflag=false;
+    bool syntaxpass=false;
     int base=10;
 };
 

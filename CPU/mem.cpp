@@ -2,10 +2,10 @@
 #include <QDebug>
 MEM::MEM()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "MEM's constructor called";
 }
 
 void MEM::wakeup()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "MEM's wakeup called";
 }

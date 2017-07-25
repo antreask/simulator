@@ -62,6 +62,7 @@ void MainWindow::checkFile()
                                 "</font>"
                                 " </html>");
                 clearEverything();
+                syntaxpass=false;
                 return;
             }
             continue;
@@ -78,6 +79,7 @@ void MainWindow::checkFile()
                                 "</font>"
                                 " </html>");
                 clearEverything();
+                syntaxpass=false;
                 return;
             }
             continue;
@@ -87,6 +89,7 @@ void MainWindow::checkFile()
 
     }
     console->append("Text Segment is syntactically correct.");
+    syntaxpass=true;
     DataDock->setWidget(DM->getDMTable());
     //console->append(assembly.readLine());
 
@@ -99,9 +102,5 @@ void MainWindow::clearEverything()
     IM->clearmemory();
 }
 
-void MainWindow::sim_Run()
-{
-    DM->clearmemory();
-    DataDock->setWidget(DM->getDMTable());
-}
+
 

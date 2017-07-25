@@ -2,10 +2,10 @@
 #include <QDebug>
 IDE::IDE()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "IDE's constructor called";
 }
 
 void IDE::wakeup()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "IDE's wakeup called";
 }

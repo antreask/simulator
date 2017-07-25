@@ -7,7 +7,7 @@ class Consumer
 public:
     Consumer();
 
-    virtual void wakeup()=0;
+    virtual void wakeup();
 };
 
 #endif // CONSUMER_H

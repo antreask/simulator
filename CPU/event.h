@@ -1,6 +1,9 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+
+#include "CPU/consumer.h"
+
 class Event
 {
 public:
@@ -13,9 +16,15 @@ public:
     int getWeight() const;
     void setWeight(int value);
 
+
+
+    Consumer *getCons() const;
+    void setCons(Consumer *value);
+
 private:
     int clock_cycle;
     int weight;
+    Consumer *cons;
 };
 
 #endif // EVENT_H

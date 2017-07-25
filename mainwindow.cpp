@@ -18,12 +18,10 @@
 #include <QPrintDialog>
 
 
-
-
 #define QT_USE_FAST_CONCATENATION
 
 
-//using namespace std;
+using namespace std;
 
 MainWindow::MainWindow()
 {
@@ -50,6 +48,7 @@ void MainWindow::init()
     QFont font;
     font.setPointSize(11);
     editor->setFont(font);
+
     RF=new RegisterFile();
     IM=new InstructionMemory();
     DM=new DataMemory();
@@ -204,40 +203,12 @@ void MainWindow::about()
 }
 
 
-void MainWindow::sim_ReinitializeSimulator()
-{
-
-}
-
-
-
-
-
-void MainWindow::sim_Pause()
-{
-
-}
-
-
-void MainWindow::sim_Stop()
-{
-
-}
-
-
-void MainWindow::sim_SingleStep()
-{
-
-}
-
 
 
 void MainWindow::documentWasModified()
 {
     setWindowModified(true);
 }
-
-
 
 
 void MainWindow::loadFile(const QString &fileName)
@@ -273,6 +244,11 @@ void MainWindow::tile(const QMainWindow *previous)
     const QPoint pos = previous->pos() + 2 * QPoint(topFrameWidth, topFrameWidth);
     if (QApplication::desktop()->availableGeometry(this).contains(rect().bottomRight() + pos))
         move(pos);
+}
+
+InstructionMemory *MainWindow::getIM() const
+{
+    return IM;
 }
 
 //! [implicit tr context]

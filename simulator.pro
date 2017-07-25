@@ -41,7 +41,8 @@ SOURCES += \
     CPU/ide.cpp \
     CPU/ife.cpp \
     CPU/mem.cpp \
-    CPU/wb.cpp
+    CPU/wb.cpp \
+    simulator.cpp
 
 HEADERS += \
         mainwindow.h \

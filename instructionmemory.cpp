@@ -41,7 +41,7 @@ bool InstructionMemory::addline(QString line)
 {
     QRegularExpression separator("(\\ |\\,|\\:|\\t|\\;|\\=)"); //RegEx for ' ' or ',' or '.' or ':' or '\t'
     QStringList list = line.split(separator,QString::SkipEmptyParts);
-
+    bundle=false;
 
     if (list.length()==1)
     {
@@ -88,6 +88,9 @@ bool InstructionMemory::addline(QString line)
             qDebug() <<list[3];
             return false;
         }
+        QString num=list[3];
+        if (num.toInt()>4095)
+            bundle=true;
     }
 
     addnewdata(list);
@@ -98,7 +101,6 @@ bool InstructionMemory::addline(QString line)
 void InstructionMemory::addnewdata(const QString &line)
 {
     QList<QStandardItem*> rowData;
-
     rowData.clear();
     rowData << new QStandardItem(QString("%1").arg(lastAddress));
     rowData << new QStandardItem(line);
@@ -115,9 +117,22 @@ void InstructionMemory::addnewdata(const QStringList &list)
     rowData << new QStandardItem(QString("%1").arg(lastAddress));
     rowData << new QStandardItem(instr);
     IMmodel->appendRow(rowData);
-    lastAddress+=4;
+    if (bundle)
+        lastAddress+=8;
+    else
+        lastAddress+=4;
     IMTable->resizeColumnsToContents();
 
+}
+
+int InstructionMemory::getPCReg() const
+{
+    return PCReg;
+}
+
+void InstructionMemory::setPCReg(int value)
+{
+    PCReg = value;
 }
 
 void InstructionMemory::clearmemory()
@@ -126,4 +141,5 @@ void InstructionMemory::clearmemory()
     IMmodel->setHorizontalHeaderLabels(QStringList() << tr("Address")<< tr("Instruction"));;
     IMTable->setModel(IMmodel);
     lastAddress=0;
+    PCReg=0;
 }

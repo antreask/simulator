@@ -3,7 +3,7 @@
 
 Event::Event()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "Event's constructor called";
 }
 
 int Event::getClock_cycle() const
@@ -25,4 +25,18 @@ void Event::setWeight(int value)
 {
     weight = value;
 }
+
+Consumer *Event::getCons() const
+{
+    return cons;
+}
+
+void Event::setCons(Consumer *value)
+{
+    cons = value;
+}
+
+
+
+
 

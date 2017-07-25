@@ -4,6 +4,11 @@
 
 Consumer::Consumer()
 {
-    qDebug()<< "WB called";
+    qDebug()<< "Consumer's constructor";
 
+}
+
+void Consumer::wakeup()
+{
+    qDebug()<< "Consumer's wakeup called";
 }

@@ -69,7 +69,12 @@ RegisterFile::RegisterFile()
             }
             else
             {
-                QStandardItem *item =  new QStandardItem( QString("0"));
+                QStandardItem *item;
+                if (r==0)
+                    item =  new QStandardItem( QString("1"));
+                else
+
+                    item =  new QStandardItem( QString("0"));
                 Predmodel->setItem(r, c, item);
             }
 
@@ -280,7 +285,16 @@ void RegisterFile::clearRegisters()
         index3 = Predmodel->index(r,1);
 
         if (r<8)
-            PredRegTable->model()->setData(index3,dat);
+        {
+            if (r==0)
+            {
+                QString val1("1");
+                QVariant dat1(val1);
+                PredRegTable->model()->setData(index3,dat1);
+            }
+            else
+                PredRegTable->model()->setData(index3,dat);
+        }
         if (r<16)
             SPRegTable->model()->setData(index2,dat);
         GPRegTable->model()->setData(index,dat);
