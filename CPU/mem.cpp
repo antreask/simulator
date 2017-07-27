@@ -2,10 +2,16 @@
 #include <QDebug>
 MEM::MEM()
 {
-    qDebug()<< "MEM's constructor called";
+    setName("memory");
+    //qDebug()<< "MEM's constructor called";
 }
 
 void MEM::wakeup()
 {
-    qDebug()<< "MEM's wakeup called";
+    //  qDebug()<< "MEM's wakeup called";
+}
+
+void MEM::init(WB *wr_back)
+{
+    write=wr_back;
 }

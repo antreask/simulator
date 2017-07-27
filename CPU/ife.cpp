@@ -2,17 +2,19 @@
 #include <QDebug>
 #include <QTableWidget>
 #include <QString>
-#include "instructionmemory.h"
 #include "mainwindow.h"
+
 
 IFE::IFE()
 {
-    qDebug()<< "IFE's constructor called";
+    //qDebug()<< "IFE's constructor called";
+    setName("fetch");
 }
 
-void IFE::init(InstructionMemory *mem)
+void IFE::init(InstructionMemory *mem, IDE *decode)
 {
     Imem=mem;
+    dec=decode;
 }
 
 void IFE::printIM()
@@ -31,6 +33,6 @@ void IFE::printIM()
 
 void IFE::wakeup()
 {
-    qDebug()<< "IFE's wakeup called";
+    // qDebug()<< "IFE's wakeup called";
 
 }

@@ -8,7 +8,8 @@ class Event
 {
 public:
     Event();
-
+    Event(Consumer *cons, int weight);
+    Event(Consumer *cons);
 
     int getClock_cycle() const;
     void setClock_cycle(int value);

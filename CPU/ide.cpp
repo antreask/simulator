@@ -2,10 +2,16 @@
 #include <QDebug>
 IDE::IDE()
 {
-    qDebug()<< "IDE's constructor called";
+    setName("decode");
+    // qDebug()<< "IDE's constructor called";
 }
 
 void IDE::wakeup()
 {
-    qDebug()<< "IDE's wakeup called";
+    // qDebug()<< "IDE's wakeup called";
+}
+
+void IDE::init(EXE *exec)
+{
+    execute=exec;
 }

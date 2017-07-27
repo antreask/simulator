@@ -3,7 +3,30 @@
 
 Event::Event()
 {
-    qDebug()<< "Event's constructor called";
+    //qDebug()<< "Event's constructor called";
+}
+
+Event::Event(Consumer *cons, int weight)
+{
+    this->cons=cons;
+    this->weight=weight;
+
+}
+
+Event::Event(Consumer *cons)
+{
+    this->cons=cons;
+    qDebug() << cons->getName();
+    if ((cons->getName())=="fetch")
+        weight=0;
+    else if ((cons->getName())=="decode")
+        weight=1;
+    else if ((cons->getName())=="execute")
+        weight=2;
+    else if ((cons->getName())=="memory")
+        weight=3;
+    else if ((cons->getName())=="write")
+        weight=4;
 }
 
 int Event::getClock_cycle() const

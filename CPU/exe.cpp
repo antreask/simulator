@@ -2,10 +2,16 @@
 #include <QDebug>
 EXE::EXE()
 {
-    qDebug()<< "EXE's constructor called";
+    setName("execute");
+    // qDebug()<< "EXE's constructor called";
 }
 
 void EXE::wakeup()
 {
-    qDebug()<< "EXE's wakeup called";
+    // qDebug()<< "EXE's wakeup called";
+}
+
+void EXE::init(MEM *memo)
+{
+    memory=memo;
 }

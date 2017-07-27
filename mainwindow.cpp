@@ -246,10 +246,6 @@ void MainWindow::tile(const QMainWindow *previous)
         move(pos);
 }
 
-InstructionMemory *MainWindow::getIM() const
-{
-    return IM;
-}
 
 //! [implicit tr context]
 void MainWindow::createActions()
@@ -360,7 +356,7 @@ void MainWindow::createActions()
     const QIcon checkIcon = QIcon(":/icons/Check.png");
     QAction *check = simMenu->addAction(checkIcon,tr("Check Source"), this, &MainWindow::checkFile);
     check->setShortcut(tr("F4"));
-    check->setStatusTip(tr("The program will run until it finishes"));
+    check->setStatusTip(tr("Check whether the assembly file is correct"));
     fileToolBar->addAction(check);
 
     const QIcon runIcon = QIcon(":/icons/Run.png");

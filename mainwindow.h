@@ -49,9 +49,7 @@ public:
     InstructionMemory *IM;
     DataMemory *DM;
     QActionGroup *RegViewGroup;
-    deque<Event> que;
-
-    InstructionMemory *getIM() const;
+    deque<Event*> que;
 
 public slots:
     void isRegFileChanged();
@@ -73,8 +71,8 @@ private slots:
 
     void sim_ReinitializeSimulator();
     void sim_Run();
-    void sim_Pause();
-    void sim_Stop();
+    // void sim_Pause();
+    // void sim_Stop();
     void sim_SingleStep();
 
 private:
@@ -116,7 +114,7 @@ private:
     QMenu *viewMenu;
     QString curFile;
     void clearEverything();
-    void sort_queue(deque<Event> &queue);
+    void sort_queue(deque<Event *> &queue);
     bool isUntitled;
     bool isfileok=false;
     bool dataflag=false;

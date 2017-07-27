@@ -2,10 +2,11 @@
 #include <QDebug>
 WB::WB()
 {
-    qDebug()<< "WB's constructor called";
+    setName("write");
+    // qDebug()<< "WB's constructor called";
 }
 
 void WB::wakeup()
 {
-    qDebug()<< "WB's wakeup called";
+    // qDebug()<< "WB's wakeup called";
 }

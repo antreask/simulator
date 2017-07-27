@@ -55,11 +55,8 @@ void MainWindow::sim_Run()
     decode->init(execute);
     memory->init(write_back);
 
-    Event *init_event= new Event(fetch,0);
-    init_event->setClock_cycle(0);
-    Event *init_event2= new Event(decode);
-    qDebug()<<init_event->getWeight()<<init_event2->getWeight();
-
+    
+    que.push_front(new Event(fetch));
 
 
     /*   if (Spinbox->value()==0)
