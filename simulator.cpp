@@ -44,6 +44,17 @@ void MainWindow::sort_queue(deque<Event*> &queue)
 void MainWindow::sim_Run()
 {
 
+    if (syntaxpass)
+    {
+        // --------------->>>>>>>>>>put the code below in here
+    }
+    else
+    {
+        console->append("<html>"
+                        "<b>Check source first!! (F4)</b>"
+                        "</html>");
+        // ---------------> Uncomment this     ----->>>>>>>>>return;
+    }
 
     IFE *fetch= new IFE();
     IDE *decode=new IDE();
@@ -55,11 +66,8 @@ void MainWindow::sim_Run()
     decode->init(execute);
     memory->init(write_back);
 
-    Event *init_event= new Event(fetch,0);
-    init_event->setClock_cycle(0);
-    Event *init_event2= new Event(decode);
-    qDebug()<<init_event->getWeight()<<init_event2->getWeight();
 
+    // queue.push_front(new Event(fetch));
 
 
     /*   if (Spinbox->value()==0)
@@ -102,27 +110,8 @@ void MainWindow::sim_Run()
       }*/
 
 
-
-
-
 }
 
-
-
-void MainWindow::sim_ReinitializeSimulator()
-{
-
-}
-
-
-/*void MainWindow::sim_Pause()
-{
-}
-
-void MainWindow::sim_Stop()
-{
-}
-*/
 
 void MainWindow::sim_SingleStep()
 {

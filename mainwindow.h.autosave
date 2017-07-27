@@ -118,6 +118,7 @@ private:
     bool instflag=false;
     bool mainflag=false;
     bool syntaxpass=false;
+    int main_clock=0;
     int base=10;
 };
 

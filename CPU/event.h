@@ -8,16 +8,14 @@ class Event
 {
 public:
     Event();
-    Event(Consumer *cons, int weight);
-    Event(Consumer *cons);
+    Event(const int &clock,Consumer *cons, int weight);
+    Event(const int &clock,Consumer *cons);
 
     int getClock_cycle() const;
     void setClock_cycle(int value);
 
     int getWeight() const;
     void setWeight(int value);
-
-
 
     Consumer *getCons() const;
     void setCons(Consumer *value);
