@@ -104,3 +104,5 @@ void MainWindow::clearEverything()
 
 
 
+
+

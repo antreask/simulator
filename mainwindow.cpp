@@ -370,17 +370,25 @@ void MainWindow::createActions()
     fileToolBar->addAction(run);
 
 
-    const QIcon pauseIcon = QIcon(":/icons/Pause.png");
+
+    Spinbox = new QSpinBox;
+    Spinbox->setRange(0, 300);
+    Spinbox->setSingleStep(1);
+    Spinbox->setValue(0);
+    Spinbox->setStatusTip(tr("Run simulator for the given amount of clock cycles"));
+    fileToolBar->addWidget(Spinbox);
+
+    /*const QIcon pauseIcon = QIcon(":/icons/Pause.png");
     QAction *pause = simMenu->addAction(pauseIcon,tr("Pause"), qApp, &QApplication::aboutQt);
     fileToolBar->addAction(pause);
 
     const QIcon stopIcon = QIcon(":/icons/Stop.png");
     QAction *stop = simMenu->addAction(stopIcon,tr("Stop"), qApp, &QApplication::aboutQt);
-    fileToolBar->addAction(stop);
+    fileToolBar->addAction(stop);*/
 
     const QIcon singleStepIcon = QIcon(":/icons/SingleStep.png");
-    QAction *singleStep = simMenu->addAction(singleStepIcon,tr("Single Step"), qApp, &QApplication::aboutQt);
-    singleStep->setStatusTip(tr("Move a single step between instructions"));
+    QAction *singleStep = simMenu->addAction(singleStepIcon,tr("Single Clock Cycle"), qApp, &QApplication::aboutQt);
+    singleStep->setStatusTip(tr("Run simulator for a single clock cycle"));
     singleStep->setShortcut(tr("F6"));
     fileToolBar->addAction(singleStep);
 

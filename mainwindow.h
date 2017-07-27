@@ -7,6 +7,7 @@
 #include <QTableWidget>
 #include <codeeditor.h>
 #include <QActionGroup>
+#include <QSpinBox>
 #include <deque>
 #include "registerfile.h"
 #include "instructionmemory.h"
@@ -43,6 +44,7 @@ public:
     QDockWidget *SPDock;
     QDockWidget *PredDock;
     QDockWidget *ConsoleDock;
+    QSpinBox *Spinbox;
     RegisterFile *RF;
     InstructionMemory *IM;
     DataMemory *DM;
@@ -114,6 +116,7 @@ private:
     QMenu *viewMenu;
     QString curFile;
     void clearEverything();
+    void sort_queue(deque<Event> &queue);
     bool isUntitled;
     bool isfileok=false;
     bool dataflag=false;

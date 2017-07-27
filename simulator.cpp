@@ -29,13 +29,20 @@ struct Comp
     }
 };
 
+
+void MainWindow::sort_queue(deque<Event> &queue)
+{
+    //deque<Event> b(que); // copy of init
+    make_heap( queue.begin(), queue.end(),Comp() ); // create heap from array queue
+    sort_heap( queue.begin(), queue.end(),Comp() ); // sort elements with sort_heap
+
+}
+
+
+
+
 void MainWindow::sim_Run()
 {
-    //DM->clearmemory();
-    //DataDock->setWidget(DM->getDMTable());
-    /*deque<Event> b(a); // copy of init
-    make_heap( b.begin(), b.end(),Comp() ); // create heap from array a
-    sort_heap( b.begin(), b.end(),Comp() ); // sort elements with sort_heap*/
 
     for (int i=0; i<3; i++)
     {
@@ -49,9 +56,7 @@ void MainWindow::sim_Run()
         que.push_front(event);
     }
 
-    deque<Event> b(que); // copy of init
-    make_heap( b.begin(), b.end(),Comp() ); // create heap from array a
-    sort_heap( b.begin(), b.end(),Comp() ); // sort elements with sort_heap
+
 
     for (int i=0; i<3; i++)
     {
