@@ -18,6 +18,7 @@
 #include <QPrintDialog>
 
 
+
 #define QT_USE_FAST_CONCATENATION
 
 
@@ -52,6 +53,7 @@ void MainWindow::init()
     RF=new RegisterFile();
     IM=new InstructionMemory();
     DM=new DataMemory();
+    GI=new global_info();
     setCentralWidget(editor);
 
     createActions();

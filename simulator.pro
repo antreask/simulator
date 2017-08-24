@@ -42,7 +42,8 @@ SOURCES += \
     CPU/ife.cpp \
     CPU/mem.cpp \
     CPU/wb.cpp \
-    simulator.cpp
+    simulator.cpp \
+    global_info.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -58,7 +59,8 @@ HEADERS += \
     CPU/ide.h \
     CPU/ife.h \
     CPU/mem.h \
-    CPU/wb.h
+    CPU/wb.h \
+    global_info.h
 
 RESOURCES += \
     menu_icons/images.qrc

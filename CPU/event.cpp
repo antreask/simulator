@@ -6,13 +6,7 @@ Event::Event()
     //qDebug()<< "Event's constructor called";
 }
 
-Event::Event(const int &clock,Consumer *cons, int weight)
-{
-    this->cons=cons;
-    this->weight=weight;
-    clock_cycle=clock;
 
-}
 
 Event::Event(const int &clock,Consumer *cons)
 {
@@ -31,6 +25,15 @@ Event::Event(const int &clock,Consumer *cons)
     clock_cycle=clock;
 
 }
+
+Event::Event(const int &clock,Consumer *cons, int weight)
+{
+    this->cons=cons;
+    this->weight=weight;
+    clock_cycle=clock;
+}
+
+
 
 int Event::getClock_cycle() const
 {

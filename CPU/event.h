@@ -4,11 +4,14 @@
 
 #include "CPU/consumer.h"
 
+
 class Event
 {
 public:
     Event();
+
     Event(const int &clock,Consumer *cons, int weight);
+
     Event(const int &clock,Consumer *cons);
 
     int getClock_cycle() const;
@@ -18,6 +21,8 @@ public:
     void setWeight(int value);
 
     Consumer *getCons() const;
+
+
     void setCons(Consumer *value);
 
 private:

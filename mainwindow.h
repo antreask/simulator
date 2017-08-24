@@ -12,10 +12,9 @@
 #include "registerfile.h"
 #include "instructionmemory.h"
 #include "datamemory.h"
-
 #include "CPU/consumer.h"
 #include "CPU/event.h"
-
+#include "global_info.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -49,7 +48,7 @@ public:
     InstructionMemory *IM;
     DataMemory *DM;
     QActionGroup *RegViewGroup;
-    deque<Event*> queue;
+    global_info *GI;
 
 public slots:
     void isRegFileChanged();
@@ -111,7 +110,6 @@ private:
     QMenu *viewMenu;
     QString curFile;
     void clearEverything();
-    void sort_queue(deque<Event *> &queue);
     bool isUntitled;
     bool isfileok=false;
     bool dataflag=false;

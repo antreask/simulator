@@ -15,28 +15,6 @@
 
 using namespace std;
 
-struct Comp
-{
-    bool operator()(const Event* s1, const Event* s2)
-    {
-
-        if (s1->getClock_cycle() == s2->getClock_cycle())
-            return (s1->getWeight() > s2->getWeight());
-        else
-            return (s1->getClock_cycle() > s2->getClock_cycle());
-
-
-    }
-};
-
-
-void MainWindow::sort_queue(deque<Event*> &queue)
-{
-    //deque<Event> b(que); // copy of init
-    make_heap( queue.begin(), queue.end(),Comp() ); // create heap from array queue
-    sort_heap( queue.begin(), queue.end(),Comp() ); // sort elements with sort_heap
-
-}
 
 
 
@@ -66,8 +44,7 @@ void MainWindow::sim_Run()
     decode->init(execute);
     memory->init(write_back);
 
-
-    // queue.push_front(new Event(fetch));
+    GI->queue.push_front(new Event(1,fetch));
 
 
     /*   if (Spinbox->value()==0)

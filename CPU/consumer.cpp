@@ -22,3 +22,13 @@ void Consumer::setName(const QString &value)
 {
     name = value;
 }
+
+/*global_info *Consumer::getInfo() const
+{
+    return info;
+}
+
+void Consumer::setInfo(global_info *value)
+{
+    info = value;
+}*/
