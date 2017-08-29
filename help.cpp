@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 #include <QFileInfo>
-#include <QProcess>
+#include <QDesktopServices>
 #include <qmessagebox.h>
 
 // Help menu
@@ -9,47 +9,28 @@
 
 void MainWindow::help_ViewHelp()
 {
-    QProcess *process = new QProcess;
-    QStringList args;
+    QString path=QFileInfo(".").absolutePath();
 
-    char* helpFile[] = {"help/qtspim.qhc",      // Windows
-                        "/Applications/QtSpim.app/Contents/Resources/doc/qtspim.qhc", // Mac
-                        "/usr/lib/qtspim/help/qtspim.qhc", // Linux
-                        0
-                       };
-
-    int i;
-    for (i = 0; helpFile[i] != 0; i += 1)
+    if(QFileInfo(path+"/doc.pdf").exists())
     {
-        QFileInfo fi1(helpFile[i]);
-        if (fi1.exists())
-        {
-            args << QLatin1String("-collectionFile") << QLatin1String(helpFile[i]);
-            break;
-        }
+        // it exists
+        QDesktopServices::openUrl(QUrl(path+"/doc.pdf"));
     }
-
-    if (helpFile[i] == 0)
+    else
     {
+        // it doesn't exist
+        console->append("The documentation file does not exist\n"+ path+"/doc.pdf does not exist");
         QMessageBox msgBox;
-        msgBox.setText(tr("Cannot find Patmos' ISA Simulator help file. Check installation."));
+        msgBox.setText("Cannot find Patmos' ISA Simulator help file.\n"+ path+"/doc.pdf does not exist.");
         msgBox.exec();
         return;
+
     }
 
-    char* assistant[] = {"assistant", // Windows
-                         "/Applications/QtSpim.app/Contents/MacOS/Assistant", // Mac
-                         "/usr/lib/qtspim/bin/assistant", // Linux
-                         0
-                        };
 
-    process->start(QLatin1String(assistant[i]), args);
-    if (!process->waitForStarted())
-    {
-        QMessageBox msgBox;
-        msgBox.setText(tr("Cannot start help browser (Qt assistant). Check installation."));
-        msgBox.exec();
-    }
+
+
+
 }
 
 

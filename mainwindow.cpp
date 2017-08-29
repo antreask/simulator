@@ -362,7 +362,7 @@ void MainWindow::createActions()
     fileToolBar->addAction(check);
 
     const QIcon runIcon = QIcon(":/icons/Run.png");
-    QAction *run = simMenu->addAction(runIcon,tr("Run/Continue"), this, &MainWindow::sim_Run);
+    QAction *run = simMenu->addAction(runIcon,tr("Run"), this, &MainWindow::sim_Run);
     run->setShortcut(tr("F5"));
     run->setStatusTip(tr("The program will run until it finishes"));
     fileToolBar->addAction(run);
@@ -457,6 +457,7 @@ void MainWindow::createActions()
 
     const QIcon helpIcon = QIcon(":/icons/Help.png");
     QAction *docAct = helpMenu->addAction(helpIcon,tr("&Documentation"), this, &MainWindow::help_ViewHelp);
+    docAct->setShortcut(tr("F1"));
     docAct->setStatusTip(tr("Show the program's documentation file"));
 
 

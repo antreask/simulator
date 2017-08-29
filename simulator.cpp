@@ -21,7 +21,7 @@ using namespace std;
 
 void MainWindow::sim_Run()
 {
-
+    qDebug() << GI->queue.size();
     if (syntaxpass)
     {
         // --------------->>>>>>>>>>put the code below in here
@@ -44,7 +44,20 @@ void MainWindow::sim_Run()
     decode->init(execute);
     memory->init(write_back);
 
-    GI->queue.push_front(new Event(1,fetch));
+    GI->queue.push_front(new Event(GI->clock_cycle,fetch));
+    GI->queue.push_front(new Event(GI->clock_cycle,decode));
+    GI->queue.push_front(new Event(GI->clock_cycle,execute));
+    GI->queue.push_front(new Event(GI->clock_cycle,memory));
+    GI->queue.push_front(new Event(GI->clock_cycle,write_back));
+    GI->sort_queue();
+    qDebug() << GI->queue.size();
+    for (int i=0; i<5; i++)
+    {
+
+        Event *e=GI->queue.front();
+        GI->queue.pop_front();
+        qDebug() << (e->getCons())->getName();
+    }
 
 
     /*   if (Spinbox->value()==0)
